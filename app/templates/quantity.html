@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-6 mx-auto mt-2">
+  <div class="card-body border rounded bg-white">
+    <h3 class="card-title text-dark font-weight-bold mb-3">{{ product.product_name }}</h3>
+    <hr>
+    <dl class="row">
+      <dt class="col-sm-3">Type</dt>
+      <dd class="col-sm-9">{{ product.product_type }}</dd>
+      <dt class="col-sm-3">Package</dt>
+      <dd class="col-sm-9">{{ product.package_type }}</dd>
+      <dt class="col-sm-3">Current Quantity</dt>
+      <dd class="col-sm-9">{{ product.quantity }}</dd>
+      <dt class="col-sm-3">Price</dt>
+      <dd class="col-sm-9">{{ product.price }} / each</dd>
+    </dl>
+  <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+    <dl>
+      <dt class="col-sm-3 pl-0 text-danger">New Quantity</dt>
+      <dd class="col-sm-3 pl-0">{{ form.quantity(class="form-control form-select") }}</dd>
+    </dl>
+    <button class="btn btn-primary">Update</button>
+  </form>
+  </div>
+  </div>
+{% endblock content %}

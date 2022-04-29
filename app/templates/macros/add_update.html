@@ -1,0 +1,20 @@
+{% macro add_update(label="", input="", err="", sm="", grp="") -%}
+  <div class="col-md-4">
+    {% if grp %}
+    {{ label }}
+    <div class="input-group">
+      <div class="input-group-text">{{ grp }}</div>
+        {{ input }}
+      </div>
+    {% else %}
+      {{ label }}
+      {{ input }}
+    {% endif %}
+    {% if sm %}
+      <small class="form-text text-info">Current value: {{ sm }}</small>
+    {% endif %}
+    {% for error in err %}
+      <small class="form-text text-danger">{{ error }}</small>
+    {% endfor %}
+  </div>
+{%- endmacro %}

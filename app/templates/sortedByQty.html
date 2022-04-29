@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block sort %}
+    {{ thd.thead(href1=url_for('index'), href2=url_for('sortedBy', sortBy='package')) }}
+{% endblock sort %}
+
+{% block paginate %}
+    {% for page_num in products.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+            {% if products.page == page_num %}
+                <a class="btn btn-info mb-4" href="{{ url_for('sortedBy', sortBy='quantity', page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+                <a class="btn btn-outline-info mb-4" href="{{ url_for('sortedBy', sortBy='quantity', page=page_num) }}">{{ page_num }}</a>
+            {% endif %}  
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+{% endblock paginate %}

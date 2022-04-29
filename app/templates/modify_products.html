@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container rounded mt-2">
+  <div class="col-12 col-lg-12 mx-auto">
+    {% if num_items == 0 %}
+      <p class="m-0">Your invintory is empty</p>
+    {% endif %}
+    <h1 class="text-center">Modify Prducts</h1>
+    <div class="row p-2">
+      {% for product in products: %}
+        <div class="col-12 col-lg-4 mb-2">
+          <div class="card border-light shadow-sm">
+            <ul class="list-group list-group-flush text-center">
+              <a href="{{ url_for('managements.product', product_id=product.id) }}" class="list-group-item btn btn-secondary text-dark text-decoration-none">{{ product.product_name }}</a>
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+</div>
+
+{% endblock content %}

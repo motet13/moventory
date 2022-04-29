@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col"></div>
+            <div class="card col-12 col-lg-6 p-0">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h3 class="card-title text-dark font-weight-bold mb-3">{{ product.product_name }}</h3>
+                    <hr>
+                    <dl class="row">
+                        <dt class="col-sm-3">Type</dt>
+                        <dd class="col-sm-9">{{ product.product_type }}</dd>
+                        <dt class="col-sm-3">Package</dt>
+                        <dd class="col-sm-9">{{ product.package_type }}</dd>
+                        <dt class="col-sm-3">Quantity</dt>
+                        <dd class="col-sm-9">{{ product.quantity }}</dd>
+                        <dt class="col-sm-3">Price</dt>
+                        <dd class="col-sm-9">{{ product.price }}</dd>
+                    </dl>
+                    <a class="btn btn-info btn mt-1 mr-1 mb-1 ml-0" href="{{ url_for('managements.update_product', product_id=product.id) }}">Update</a>
+                    <button class="btn btn-danger btn m-1" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                </div>
+                <!--                 <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div> -->
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Product?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <form action="{{ url_for('managements.delete_product', product_id=product.id) }}" method="POST">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    {% endblock content %}

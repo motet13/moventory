@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-md-6 mx-auto">
+        <h2>Schedule</h2>
+        <p class="small-info-text">Set a date to remind you by email about something.</p>
+      </div>
+    </div>
+    <form method="post", novalidate>
+      <div class="row">
+        <div class="col-md-6 mx-auto border p-2">
+          <div class="mb-3">
+              {{form.title.label(class="form-label px-2")}}
+              {{form.title(class="form-control", placeholder="Change Filter")}}
+          </div>
+          <div class="mb-3">
+              {{form.date.label(class="form-label px-2")}}
+              <input type="date" class="form-control" name="date">
+            </div>
+          <div class="mb-3">
+              {{form.message.label(class="form-label px-2")}}
+              <p class="px-2 text-muted small-info-text">The message input will be the body of the email that will be sent to you.</p>
+              {{form.message(class="form-control", rows="3")}}
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Set Schedule</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="row mt-2 p-0">
+      <div class="col-md-6 mx-auto border-top p-0">
+        <a href="{{url_for('main.scheduled_list')}}" class="btn text-primary ps-2 small-table-text"><i class="bi bi-card-list fs-5 text-secondary"></i> See all scheduled list here</a>  
+      </div>
+    </div>
+   </div>
+{% block search %}{% endblock search %}
+{% endblock content %}

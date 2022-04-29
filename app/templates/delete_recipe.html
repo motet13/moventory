@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container rounded mt-2">
+        <!-- Alert -->
+        <div class="alert alert-success d-none" role="alert"></div>
+        <div class="col-12 col-lg-6 mx-auto">
+            <h1 class="text-center">Delete Recipe</h1>
+            <div class="row p-2" id="recipes-list">
+                {% for dish in recipes['Recipes'] %}
+                <div class="col-12 col-lg-4 mb-2">
+                    <div class="card border-light">
+                        <ul class="list-group list-group-flush text-center">
+                            <button class="list-group-item btn btn-secondary text-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#deleteModal">{{ dish['Name'] }}</button>
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Delete this recipe?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-danger" type="submit" id="deleteRecipeButton">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{% block script %}
+<script>let recipes = {{ recipes|safe }};</script>
+<script src="{{ url_for('static', filename='/js/delete_recipes.js') }}"></script>
+{% endblock script %}

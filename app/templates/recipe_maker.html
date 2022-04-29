@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style_recipes.css') }}">
+{% endblock css %}
+{% block content %}
+    <div class="container p-0">
+        <div id="dish-alert" class="alert alert-success d-none" role="alert"></div>
+        {% if name %}
+            <h2 class="text-center">Edit {{name}}</h2>
+        {% else %}
+            <h2 class="text-center">Make Your Recipe</h2>
+        {% endif %}
+        <form method="post", novalidate class="row g-3 bg-white border p-2 mt-2", enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="d-flex justify-content-around flex-wrap">
+                    <div class="col-12 col-sm-12 col-lg-8 px-2 border">
+                        <p>Preview</p>
+                        <p class="text-primary small-table-text">Dish Name: <span id="dish-name-output" class="text-dark"></span></p>
+                        <p class="text-primary small-table-text">Description: <span class="text-dark" id="dish-description-output"></span></p>
+                        <p class="text-primary small-table-text">Ingredients:</p>
+                        <ul id="ingredients-output"></ul>
+                        <p class="text-primary small-table-text">Instructions:</p>
+                        <ol id="instructions-output"></ol>
+                    </div>
+                    <div class="col-12 col-sm-12 col-lg-4 order-first">
+                        <div class="px-2 mb-2">
+                            {{ form.dish_name(class="form-control small-table-text", placeholder="Dish Name") }}
+                        </div>
+                        <div class="px-2 mb-2">
+                            {{ form.dish_description(class="form-control small-table-text", rows="1", placeholder="Dish Description") }}
+                            {% if form.dish_description.errors %}
+                                {% for error in form.dish_description.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <div class="px-2 mb-2">
+                            {{ form.dish_ingredient_name(class="form-control small-table-text", placeholder="Ingredient: salt, pepper, water, etc.") }}
+                            {% if form.dish_ingredient_name.errors %}
+                                {% for error in form.dish_ingredient_name.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <div class="px-2 mb-2">
+                            <div class="input-group">
+                                <span class="input-group-text small-table-text">whole</span>
+                                {{ form.dish_ingredient_whole_measurements(id="a", class="form-control small-table-text", placeholder="example: 1, 1 1/2, 2, etc.") }}
+                                <span class="input-group-text small-table-text">fraction</span>
+                                {{ form.dish_ingredient_fraction_measurements(id="a", class="form-control small-table-text") }}
+                            </div>
+                        </div>
+
+                        <div class="px-2 mb-2">
+                            {{ form.dish_measurement_type(class="form-control small-table-text", placeholder="Type: oz, cups, tbsp, tsp, etc.") }}
+                            {% if form.dish_measurement_type.errors %}
+                                {% for error in form.dish_measurement_type.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-2 px-2">
+                            <button id="add_circle_outline" class="btn btn-light small-table-text" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="add another ingredient">
+                                Add this ingredient <i class="bi bi-plus-circle text-success fs-5"></i>
+                            </button>
+                        </div>
+
+                        <div class="mb-2 px-2">
+                            <!-- <div class="mt-4">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Toggle switch to change default image.</label>
+                            </div> -->
+                            {{ form.dish_image.label(class="pb-2 fw-bold")}}
+                            {{ form.dish_image(class="form-control px-2 small-info-text") }}
+                            {% if form.dish_image.errors %}
+                                {% for error in form.dish_image.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="ms-2 d-none" id="image-error"><span class="text-danger">The file you have selected is too large. Please select another file.</span></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 mt-4">
+                    {{ form.dish_instructions.label(class="pb-2 fw-bold")}}
+                    {{ form.dish_instructions(class="form-control small-table-text", rows="3", placeholder="Insert a step then click button below (Add this step).") }}
+                    {% if form.dish_instructions.errors %}
+                        {% for error in form.dish_instructions.errors %}
+                            <span class="text-danger">{{ error }}</span><br>
+                        {% endfor %}
+                    {% endif %}
+                    <button id="add_circle_outline_instructions" class="btn btn-light mt-2 small-table-text" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="add another step">
+                        Add this step <i class="bi bi-plus-circle text-success fs-5"></i>
+                    </button>
+                </div>
+
+                <div class="col-12 pt-4">
+                    <button id="task_alt" class="btn btn-light small-table-text" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Verify">
+                        Verify <i class="bi bi-check2-circle text-success fs-5"></i>
+                    </button>
+                    <input type="submit" class="btn btn-primary small-table-text", name="submit", value="Create Recipe">
+                </div>
+            </div>
+          </form>
+    </div>
+<script src="{{ url_for('static', filename='/js/recipes.js') }}"></script>
+{% endblock content %}

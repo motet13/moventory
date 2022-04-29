@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% if title %}
+      <title>{{ title }}</title>
+    {% else %}
+      <title>MoVintory</title>
+    {% endif %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{{url_for('static', filename='/css/bootstrap5/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='/bootstrap_icons/bootstrap-icons.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='/css/style.min.css')}}">
+    {% block css %}{% endblock css %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark-nav sticky-top border-bottom p-0 mb-1">
+      <div class="container-fluid">
+        <a class="navbar-brand fs-2 text-secondary" href="{{url_for('main.index')}}">MoVintory</a>
+        {% block navigation %}{% endblock navigation %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0 fw-bold ms-auto">
+            <li class="nav-item me-4"><a class="nav-link" href="{{url_for('main.index')}}">Home</a></li>
+            <li class="nav-item me-4"><a class="nav-link" href="{{url_for('recipes.recipes_page')}}">Recipes</a></li>
+            {% if current_user.is_authenticated and current_user.id == 1 %}
+              <li class="nav-item me-4"><a class="nav-link" href="{{url_for('managements.manager')}}">Manager</a></li>
+              <li class="nav-item me-4"><a class="nav-link" href="{{url_for('main.about')}}">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{url_for('users.logout')}}">Logout</a></li>
+            {% elif current_user.is_anonymous %}
+              <li class="nav-item me-4"><a class="nav-link" href="{{url_for('main.about')}}">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{url_for('users.login')}}">Login</a></li>
+          </div>
+            {% endif %}
+          </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{category}}">{{message}}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  {% block content %}{% endblock content %}
+{% block script %}{% endblock script %}
+<script src="{{url_for('static', filename='/js/main.js')}}"></script>
+<script src="{{url_for('static', filename='/js/bootstrap5/bootstrap.bundle.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</body>
+</html>

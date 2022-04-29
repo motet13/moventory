@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style_recipes.css') }}">
+{% endblock css %}
+{% block content %}
+    <div class="container mt-2">
+            <h2>{{ dish_info.Name.title() }}</h2>
+            <div class="row">
+            <div class="col-sm-8 py-2">
+                <h5>Ingredients</h5>
+                <ul>
+                {% for ingredient in dish_info.Ingredients %}
+                    <li class="p-1">
+                        {{ingredient.measurement.whole}}
+                        {% if ingredient.measurement.fraction %}
+                            <sup>{{ingredient.measurement.fraction[0]}}</sup>&frasl;<sub>{{ingredient.measurement.fraction[-1]}}</sub>
+                        {% endif %}
+                        {{ingredient.unit}}
+                        {{ingredient.item}}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div id="recipe_image" class="col-sm-4 order-sm-last order-first d-flex justify-content-sm-center">
+                <img src="{{url_for('static', filename=dish_info_image)}}" alt="recipe image" class="mx-auto mt-2 mb-2 shadow">
+            </div>
+            </div>
+            <div class="row border-top">
+                <div class="col-sm-12 py-2">
+                    <h5>Instructions</h5>
+                    <ol>
+                        {% for step in dish_info.Instructions %}
+                            <li class="p-1">{{ step }}</li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+      </div>
+<script src="{{ url_for('static', filename='/js/dish.js') }}"></script>
+{% endblock content %}

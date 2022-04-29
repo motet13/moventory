@@ -1,0 +1,146 @@
+@font-face {
+    font-family: "Satisfy";
+    src: url("../fonts/Satisfy-Regular.ttf") format("truetype");
+    font-weight: bold;
+  }
+  
+
+body {
+    background: #fafafa;
+}
+
+.nav-logo {
+    color: #1f3346;
+}
+
+.bg-dark-nav {
+    background-color: #1f3346;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+.navbar-light .navbar-nav a.nav-link:hover {
+    color: #6c757d;
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show>.nav-link {
+    color: #ffc107;
+}
+
+.navbar-light .navbar-brand {
+    color:rgb(0, 26, 51);
+    font-family: Satisfy, cursive;
+    text-decoration: underline;
+}
+
+.navbar-light  a.navbar-brand:hover {
+    color: None;
+}
+
+.navbar-light .navbar-toggler {
+    color: #6c757d;
+    border-color: #6c757d;
+  }
+
+.navbar-toggler {
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: white;
+    border: 1px solid #6c757d;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    border-radius: .25rem;
+    transition: box-shadow .15s ease-in-out;
+      transition-property: box-shadow;
+      transition-duration: 0.15s;
+      transition-timing-function: ease-in-out;
+      transition-delay: 0s;
+}
+
+.color-crimson {
+    color: crimson;
+}
+
+.bg-nav {
+    background-color: #ed143d61;
+}
+
+.table-bg {
+    background-color: #1f3346;
+}
+
+td > a {
+    color:rgb(0, 26, 51);
+}
+
+td > a:hover {
+    color: rgb(9, 50, 88);
+    font-weight:600;
+}
+
+.card ul a:hover {
+    background-color: #0d6efd;
+}
+
+.drop-menu  {
+    display: none;
+    position: relative;
+}
+
+.drop-menu-active {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    background-color: white;
+    list-style: none;
+    padding-left: 0;
+    top: 100px;
+}
+
+.spinner-grow {
+    display: inline-block;
+}
+/* .container-fluid {
+    max-width: 900px;
+} */
+
+.empty-items {
+    display: none;
+}
+
+/* Scan It */
+.qr-output-container {
+    margin-top: 1em;
+    padding: .3rem;
+}
+#qr-output {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.scanOUTStyle {
+    border: 1px solid #f1f1f1;
+    padding: .5rem;
+    margin-bottom: .1em;
+    background-color: #ffffff;
+}
+
+.material-icons {
+    color: crimson;
+    float: right;
+    cursor: pointer;
+}
+
+.small-info-text {
+    font-size: 0.8rem;
+}
+
+.small-table-text {
+    font-size: 0.9rem;
+}

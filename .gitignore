@@ -1,0 +1,11 @@
+*.pyc
+**/*.pyc
+app/db_original_product/**
+app/static/backups/uploads/**
+app/static/backups/downloads/**
+config.py
+config_original.py
+*.code-workspace
+app/static/bootstrap_icons/**
+app/static/css/bootstrap5/**
+app/static/js/bootstrap5/**

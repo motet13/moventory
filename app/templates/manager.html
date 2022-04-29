@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% import "macros/add_update.html" as au %}
+{% block content %}
+<div class="container mt-2">
+  <div class="col-lg-6 mx-auto pb-4">
+    <div style="line-height: 2em;" class="mt-4">
+      <h5 class="mt-3">Add Item</h5>
+      <p class="mb-1 text-muted">Add a product to the database.</p>
+        <a class="text-decoration-none" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <i class="bi bi-plus-circle text-dark fs-5"></i> Add a product
+        </a>
+    </div>
+  <form method="post", novalidate, class="row g-3 bg-white border p-3 mt-2 collapse" id="collapseExample">
+    {{ form.hidden_tag() }}
+    {{ au.add_update(label=form.product_name.label(class="form-label"), input=form.product_name(class="form-control text-muted"), err=form.product_name.errors) }}
+    {{ au.add_update(label=form.product_type.label(class="form-label"), input=form.product_type(class="form-control form-select text-muted"), err=form.product_type.errors) }}
+    {{ au.add_update(label=form.package_type.label(class="form-label"), input=form.package_type(class="form-control form-select text-muted"), err=form.package_type.errors) }}
+    {{ au.add_update(label=form.quantity.label(class="form-label"), input=form.quantity(class="form-control text-muted"), err=form.quantity.errors, sm=product.quantity) }}
+    {{ au.add_update(label=form.max_quantity.label(class="form-label"), input=form.max_quantity(class="form-control text-muted"), err=form.max_quantity.errors, sm=product.max_quantity) }}
+    {{ au.add_update(label=form.min_quantity.label(class="form-label"), input=form.min_quantity(class="form-control text-muted"), err=form.min_quantity.errors, sm=product.min_quantity) }}
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+  </form>
+  <hr>
+  {% block search %}{% endblock search %}
+  <div style="line-height: 2em;" class="mt-4">
+    <h5 class="mt-3">Delete A Recipe</h5>
+    <p class="mb-1 text-muted">Select and delete unwanted recipe.</p>
+    <a class="text-decoration-none" href="{{ url_for('managements.delete_recipe_dish') }}">
+      <i class="bi bi-trash text-dark fs-5"></i> Delete recipes
+    </a>
+  </div>
+  <hr>
+  <div style="line-height: 2em;" class="mt-4">
+    <h5 class="mt-3">Select A Product To Modify</h5>
+    {% if num_items == 0 %}
+    <p class="m-0">Your invintory is empty</p>
+    {% endif %}
+    <p class="mb-1 text-muted">Settings to modify product's name, quantity, and more.</p>
+    <a class="text-decoration-none" href="{{ url_for('managements.modifyProduct') }}">
+      <i class="bi bi-pen fs-5 text-dark"></i> Modify products
+    </a>
+  </div>
+  <hr>
+  <div style="line-height: 2em;" class="mt-4">
+  <h5 class="mt-3">Advance Settings</h5>
+  <p class="mb-1 text-muted">This will take you to the advance settings page. Here you can delete all items at once to start fresh. Account settings will also be available here.</p>
+  <a class="text-decoration-none" href="{{ url_for('managements.settings') }}">
+    <i class="bi bi-gear-wide-connected fs-5 text-dark"></i> Advance Settings
+  </a>
+</div>
+<hr>
+  <div style="line-height: 2em;" class="mt-4 d-flex flex-column">
+  <h5 class="mt-3">Backup and Restore</h5>
+  <p class="mb-1 text-muted">Backup all the products from the database or Restore data from a file.</p>
+    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-archive-fill"></i> Backup</a>
+    <form action="{{ url_for('managements.settings_backup_restore') }}" method="post" enctype="multipart/form-data" class="mt-2">
+        <div class="input-group d-flex justify-content-between">
+          <div class="custom-file flex-grow-1 mt-2">
+            <input type="file" name="backupfileToRestore" class="form-control custom-file-input runded-start" id="backupfileToRestore">
+          </div>
+          <div class="d-grid flex-fill mt-2">
+            <button class="btn btn-success disabled border rounded-end border-start" id="restore-btn" type="submit">Restore</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark fw-bold" id="staticBackdropLabel">Backup Products</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body-first"></div>
+        <div class="d-flex flex-column">
+          <form action="" class="row" method="post" novalidate>
+          <p class="text-muted">Download and save the file somewhere in your filesystem. This file can then be restored and access the products saved from the start to when you have backup the data.</p>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <a href="{{ url_for('managements.settings_backup_restore') }}" class="btn btn-primary">Download</a>
+      </form>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block script %}
+<script src="{{ url_for('static', filename='/js/manager.js') }}"></script>
+{% endblock script %}

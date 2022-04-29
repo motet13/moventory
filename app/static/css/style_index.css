@@ -1,0 +1,24 @@
+.show-utility-pane {
+    display: block;
+}
+
+.hide-utility-pane {
+    display: none;
+}
+
+@media only screen and (max-width: 576px) {
+    #details-pane {
+        display: none;
+    }
+
+    #main-pane {
+        margin-top: 4px;
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    #utility-btn {
+        display: none;
+    }
+}
+

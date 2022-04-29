@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style_index.css') }}">
+{% endblock css %}
+{% block navigation %}
+<button class="btn btn-transparent ms-auto me-2 text-white" data-bs-toggle="modal" data-bs-target="#staticBackdropDetails" id="utility-btn"><i class="bi bi-tools"></i></button>
+{% endblock navigation %}
+{% block content %}
+{% block search %}
+<div class="container pb-sm-2 p-1">
+<div class="d-flex">
+  <div class="input-group">
+    <input class="form-control" id="search" type="search" placeholder="Product Name" aria-label="Search">
+    <button class="btn btn-success" type="button" id="button-addon2" onclick="submit_entry();">Search</button>
+  </div>
+</div>
+</div>
+{% endblock search %}
+<div class="d-flex justify-content-center">
+  <div id="load" class="text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<div class="container-fluid p-0">
+  <div class="container mx-auto" id="main-pane">
+      <div class="row">
+        <div class="col-lg-4 col-md-12 p-0 pe-lg-0 ps-lg-1 px-sm-0 py-lg-0 order-lg-last" id="details-pane">
+          <div class="shadow-sm pb-1 bg-white">
+                <p class="fw-bold border-bottom p-2 table-bg text-white">Details & Tools</p>
+                <p class="text-dark me-2 ps-2 float-end small-table-text">Date: {{ tday }}</p>
+                <p class="text-dark mb-0 ps-2 pb-2 small-table-text">Total Items: {{ num_items }}</p>
+                <p class="text-dark mb-0 ps-2 pb-2 small-table-text">Recipe Counts: {{ recipe_counts }}</p>
+                <p class="text-dark mb-0 ps-2 pb-2 small-table-text">Task Counts: {{ task_counts }}</p>
+              <hr>
+              <div class="row m-0">
+                <div class="col col-lg-12">
+                  <a href="{{ url_for('main.gen_prod_lists') }}" id="gen-prod-list" class="btn btn-sm btn-success d-block mb-2 disabled">Shopping List</a>
+                </div>
+                <div class="col col-lg-12">
+                  <a href="{{ url_for('recipes.recipe_maker') }}" class="btn btn-sm btn-light btn-outline-primary d-block mb-2">Make Recipe</a>
+                </div>
+                <div class="col col-lg-12">
+                  <a href="{{ url_for('main.schedule_reminder') }}" class="btn btn-sm btn-light btn-outline-primary d-block mb-2">Set Reminder</a>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="product-list col-lg-8 col-md-12 p-0 order-lg-first">
+          <div class="bg-white">
+            <table class="table shadow-sm">
+              <thead class="table-bg text-center">
+                <tr>
+                  <th scope="col" class="text-start"><button class="btn fw-bold text-white btn-sm" onclick="sortName();">Name</button></th>
+                  <th scope="col"><button class="btn fw-bold text-white btn-sm" onclick="sortPackage();">Package</button></th>
+                  <th scope="col"><button class="btn fw-bold text-white btn-sm" onclick="sortQuantity();">Quantity</button></th>
+                  <th scope="col" class="text-end"><button class="fw-bold text-white btn btn-sm">Level</button></th>
+                </tr>
+            </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-lg-8 col-md-12 pe-sm-0 ps-sm-0 order-lg-first empty-items">navbar
+            <div>
+              <p class="text-muted">You currently don't have items in your invintory.</p>
+            </div>
+            <div>
+              <p><a href="{{ url_for('managements.manager') }}">Add items now</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- MODAL -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark fw-bold" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body-first"></div>
+        <div class="d-flex flex-column">
+          <form action="" class="row" method="post" novalidate>
+            <dl class="row">
+              <dt class="col-sm-6 text-danger">New Quantity:</dt>
+              <dd class="col-sm-6">
+                <input id="qty-value" class="form-control" value="{{ value }}">{{ value }}</input>
+              </dd>
+            </dl>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" onclick="update_quantity();" data-bs-dismiss="modal">Update</button>
+      </form>
+    </div> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DETAILS & TOOLS START -->
+<div class="modal fade" id="staticBackdropDetails" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropDetailsLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header bg-dark-nav">
+        <h6 class="modal-title text-light fw-bold" id="staticBackdropLabel">Details & Tools</h6>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <p class="text-dark mb-0 ps-2 pb-2 small-table-text">Total Items: {{ num_items }}</p>
+            <p class="text-dark mb-0 ps-2 pb-2 small-table-text">Recipe Counts: {{ recipe_counts }}</p>
+            <p class="text-dark mb-0 ps-2 pb-2 small-table-text">Task Counts: {{ task_counts }}</p>
+          </div>
+          <div class="col">
+            <a href="{{ url_for('main.gen_prod_lists') }}" id="gen-prod-list" class="btn btn-sm btn-success d-block mb-2 disabled">Shopping List</a>
+            <a href="{{ url_for('recipes.recipe_maker') }}" class="btn btn-sm btn-light btn-outline-primary d-block mb-2">Make Recipe</a>
+            <a href="{{ url_for('main.schedule_reminder') }}" class="btn btn-sm btn-light btn-outline-primary d-block mb-2">Set Schedule</a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-between">
+      <p class="text-dark small-table-text mb-0 float-start">Date: {{ tday }}</p>
+          <button type="button" class="btn btn-secondary small-table-text" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL DETAILS & TOOLS END -->
+
+{% endblock content %}
+{% block script %}
+<script>
+  let res = {{ res|safe }};
+  let numItems = {{ num_items|safe }};
+  let activateGen = {{ activate_gen|safe }}; 
+</script>
+<script src="{{ url_for('static', filename='/js/level.js') }}"></script>
+<script src="{{ url_for('static', filename='/js/index.js') }}"></script>
+{% endblock script %}

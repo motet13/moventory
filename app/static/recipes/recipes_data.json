@@ -1,0 +1,301 @@
+{
+    "Recipes": [
+        {
+            "id": 1,
+            "Name": "Chocolate Chip Cookies",
+            "Description": "Jessie's Favorite Ono Cookies",
+            "Ingredients": [
+                {
+                    "measurement": {
+                        "whole": "2",
+                        "fraction": "1/2"
+                    },
+                    "unit": "Cup",
+                    "item": "Flour"
+                },
+                {
+                    "measurement": {
+                        "whole": "",
+                        "fraction": "1/2"
+                    },
+                    "unit": "Cup",
+                    "item": "Sugar"
+                },
+                {
+                    "measurement": {
+                        "whole": "",
+                        "fraction": "3/4"
+                    },
+                    "unit": "Cup",
+                    "item": "Brown Sugar"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": ""
+                    },
+                    "unit": "Cup",
+                    "item": "Butter"
+                },
+                {
+                    "measurement": {
+                        "whole": "",
+                        "fraction": "1/2"
+                    },
+                    "unit": "tsp",
+                    "item": "Baking Soda"
+                },
+                {
+                    "measurement": {
+                        "whole": "",
+                        "fraction": "1/4"
+                    },
+                    "unit": "tsp",
+                    "item": "salt"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": ""
+                    },
+                    "unit": "tsp",
+                    "item": "Vanilla Extract"
+                },
+                {
+                    "measurement": {
+                        "whole": "2",
+                        "fraction": ""
+                    },
+                    "unit": "",
+                    "item": "Eggs"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": "1/2"
+                    },
+                    "unit": "Cup",
+                    "item": "Chocolate Chips"
+                }
+            ],
+            "Instructions": [
+                "Preheat Oven to 350",
+                "Sift together Flour, Baking Soda, & Salt together in a med size bowl & set aside.",
+                "Blend the softened butter in a mixer until smooth",
+                "Add in the sugar & mix well until combined & fluffy",
+                "Add in the eggs & vanilla & mix well",
+                "Add in the flour mixture & mix until just blended (do not overmix)",
+                "Add in the chocolate chips & mix by hand",
+                "Drop cookie dough by tablespoonful onto ungreased cookie sheet spread cookies approximately 2 inches apart",
+                "Bake in preheated oven for approximately 12-15 min. ",
+                "Let cool before devouring",
+                "Enjoy!"
+            ],
+            "Image": "dcfc4ee177afa291.jpg"
+        },
+        {
+            "Name": "Grilled Steaks & Romesco Panzanella",
+            "Description": "Grilled Steaks & Romesco Panzanella with Almonds & Parmesan",
+            "Ingredients": [
+                {
+                    "measurement": {
+                        "whole": "2",
+                        "fraction": ""
+                    },
+                    "unit": "",
+                    "item": "Steaks"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": ""
+                    },
+                    "unit": "",
+                    "item": "Small Baguette"
+                },
+                {
+                    "measurement": {
+                        "whole": "4",
+                        "fraction": ""
+                    },
+                    "unit": "oz",
+                    "item": "Grape Tomatoes"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": ""
+                    },
+                    "unit": "",
+                    "item": "Red Onion"
+                },
+                {
+                    "measurement": {
+                        "whole": "2",
+                        "fraction": ""
+                    },
+                    "unit": "",
+                    "item": "Scallions"
+                },
+                {
+                    "measurement": {
+                        "whole": "3",
+                        "fraction": ""
+                    },
+                    "unit": "Tbsp",
+                    "item": "Romesco Sauce (Contains Almonds)"
+                },
+                {
+                    "measurement": {
+                        "whole": "2",
+                        "fraction": ""
+                    },
+                    "unit": "Tbsp",
+                    "item": "Mayonnaise"
+                },
+                {
+                    "measurement": {
+                        "whole": "2",
+                        "fraction": ""
+                    },
+                    "unit": "Tbsp",
+                    "item": "Sliced Roasted Almonds"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": "1/2"
+                    },
+                    "unit": "Tbsp",
+                    "item": "Golden Raisins"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": ""
+                    },
+                    "unit": "Tbsp",
+                    "item": "Sherry Vinegar"
+                },
+                {
+                    "measurement": {
+                        "whole": "",
+                        "fraction": "1/4"
+                    },
+                    "unit": "cup",
+                    "item": "Grated Parmesan Cheese"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": ""
+                    },
+                    "unit": "Tbsp",
+                    "item": "Smoky Spice Blend (Smoked Paprika, Sweet Paprika, Ground Yellow Mustard, Garlic Powder & Onion Powder)"
+                }
+            ],
+            "Instructions": [
+                "Preheat your grill to maintain a temperature of 450-500\u00b0F. Carefully oil the grill grates. Wash and dry the fresh produce. Halve the tomatoes; place in a large bowl. Add the vinegar and raisins; season with salt and pepper. Toss to coat. Halvethe baguette. Peel the onion and cut crosswise into 1/2-inch-thick rounds, keeping the layers intact. Cut off and discard the root ends of the scallions. In a bowl, combine the romesco sauce and mayonnaise.",
+                "Pat the steaks dry with paper towels; drizzle with olive oil and season on both sides with salt, pepper, and enough of the spice blend to coat (you may have extra). Grill 4 to 5 minutes per side for medium-rare (125\u00b0F), or until browned and cooked to your desired degree of doneness.* Transfer to a cutting board and let rest at least 5 minutes.",
+                "Meanwhile, drizzle the halved baguette with olive oil and season with salt and pepper. Place the onion rounds and prepared scallions in a bowl. Drizzle with olive oil and season with salt and pepper; turn to coat. Grill the seasoned onion rounds 3 to 4 minutes per side, or until charred and softened. Grill the seasoned baguette and scallions 1 to 2 minutes per side, or until lightly charred and the scallions are softened. Transfer to a cutting board.",
+                "Medium dice the grilled baguette. Roughly chop the grilled onion and scallions. Transfer to the bowl of seasoned tomatoes. Add the romesco mayo; toss to combine. Taste, then season with salt and pepper if desired.",
+                "Find the lines of muscle (or grain) on the rested steaks; slice crosswise against the grain. Serve the sliced steaks with the panzanella. Garnish with the almonds and cheese. Enjoy!"
+            ],
+            "Image": "23918b867b9b4e3d.png"
+        },
+        {
+            "Name": "Garlic Shrimp & Spanish-Style Potatoes",
+            "Description": "Garlic Shrimp & Spanish-Style Potatoes with Peppers & Corn",
+            "Ingredients": [
+                {
+                    "measurement": {
+                        "whole": "10",
+                        "fraction": ""
+                    },
+                    "unit": "oz",
+                    "item": "Tail-On Shrimp (Peeled & Deveined)"
+                },
+                {
+                    "measurement": {
+                        "whole": "4",
+                        "fraction": ""
+                    },
+                    "unit": "oz",
+                    "item": "Sweet Peppers"
+                },
+                {
+                    "measurement": {
+                        "whole": "2",
+                        "fraction": ""
+                    },
+                    "unit": "cloves",
+                    "item": "Garlic"
+                },
+                {
+                    "measurement": {
+                        "whole": "2",
+                        "fraction": ""
+                    },
+                    "unit": "",
+                    "item": "ears of Corn"
+                },
+                {
+                    "measurement": {
+                        "whole": "",
+                        "fraction": "3/4"
+                    },
+                    "unit": "lb",
+                    "item": "Golden Potatoes"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": ""
+                    },
+                    "unit": "bunch",
+                    "item": "Chives"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": ""
+                    },
+                    "unit": "Tbsp",
+                    "item": "Sherry Vineger"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": ""
+                    },
+                    "unit": "oz",
+                    "item": "Butter"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": ""
+                    },
+                    "unit": "Tbsp",
+                    "item": "Spanish Spice Blend (Smoked Paprika, Ground Cumin, Ground Coriander, Dried Mexican Oregano, Cayenne Pepper & Ground Cinnamon)"
+                },
+                {
+                    "measurement": {
+                        "whole": "1",
+                        "fraction": ""
+                    },
+                    "unit": "",
+                    "item": "Yellow Onion"
+                }
+            ],
+            "Instructions": [
+                "Place an oven rack in the center of the oven; preheat to 450\u00b0F. Wash and dry the fresh produce. Line a sheet pan with foil. Medium dice the potatoes. Place on the foil. Drizzle with 2 teaspoons of olive oil and season with salt, pepper, and half the spice blend (you will have extra); toss to coat. Arrange in an even layer. Roast 18 to 22 minutes, or until browned and tender when pierced with a fork. Remove from the oven.",
+                "Meanwhile, halve, peel, and thinly slice the onion. Cut off and discard the stems of the peppers; remove the cores. Halve lengthwise, then thinly slice crosswise. Remove any husks and silks from the corn; cut the kernels off the cobs. Peel and roughly chop 2 cloves of garlic. Cut the chives into 1/2-inch pieces.",
+                "In a large pan (nonstick, if you have one), heat 2 teaspoons of olive oil on medium-high until hot. Add the sliced onion; season with salt and pepper. Cook, stirring occasionally, 2 to 3 minutes, or until lightly browned. Add the sliced peppers and corn kernels; season with salt and pepper. Cook, stirring occasionally, 3 to 4 minutes, or until slightly softened. Add the vinegar (carefully, as the liquid may splatter). Cook, stirring occasionally, 30 seconds to 1 minute, or until the liquid has cooked off. Transfer to a large bowl; cover with foil to keep warm. Wipe out the pan.",
+                "Pat the shrimp dry with paper towels (remove the tails, if desired). Season with salt and pepper. In the same pan, heat the butter and 2 teaspoons of olive oil on medium-high until hot and the butter is melted. Add the seasoned shrimp in an even layer. Cook, without stirring, 2 to 3 minutes, or until slightly opaque. Add the chopped garlic. Cook, stirring occasionally, 1 to 2 minutes, or until the shrimp are opaque and cooked through. Turn off the heat. Taste, then season with salt and pepper if desired.",
+                "To the bowl of cooked vegetables, add the roasted potatoes and 2 teaspoons of olive oil. Stir to combine. Serve the finished potatoes topped with the cooked shrimp (including any butter from the pan). Garnish with the sliced chives. Enjoy!"
+            ],
+            "Image": "8853349d5a45da4d.png"
+        }
+    ]
+}

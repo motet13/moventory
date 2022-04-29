@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container mt-4">
+    <h2 class="text-center">About</h2>
+    <div class="row">
+      <div class="col-md-6 mx-auto text-muted text-center border p-2 small-table-text">
+        <p>Something about this site.</p>
+        <p>Version: {{ version }}</p>
+        <p>{{ creation_date }}</p>
+      </div>
+    </div>
+{% block search %}{% endblock search %}
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+      <div class="col-lg-8 mx-auto">
+        <h2>Task List</h2>
+        <p class="px-2 text-muted small-info-text">Here is the list of your scheduled reminder you have set recently.</p>
+        <div class="p-0 text-end">
+          <a href="{{url_for('main.schedule_reminder')}}" class="btn text-primary pe-2 small-table-text"><i class="bi bi-plus-circle text-dark fs-6"></i> Add another task</a>  
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Scheduled Task</th>
+              <th scope="col">Due Date</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for idx, task in new_dict.items(): %}
+                {% if task['DueDate'].timestamp() < tday: %}
+                <tr class="table-secondary">
+                  <td class="small-table-text text-decoration-line-through">{{idx}}</td>
+                  <td class="small-table-text text-decoration-line-through">{{task['Subject']}}</td>
+                  <td class="small-table-text text-decoration-line-through">{{task['DueDate'].strftime('%Y-%m-%d')}}</td>
+              </tr>
+                {% else %}
+              <tr>
+                  <td class="small-table-text">{{idx}}</td>
+                  <td class="small-table-text">{{task['Subject']}}</td>
+                  <td class="small-table-text">{{task['DueDate'].strftime('%Y-%m-%d')}}</td>
+              </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+        <p class="text-info small-info-text">Task that are 2 weeks old will be removed automatically from list above.</p>
+      </div>
+    </div>
+</div>
+
+{% block search %}{% endblock search %}
+{% endblock content %}

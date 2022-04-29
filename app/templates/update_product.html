@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "macros/add_update.html" as au %}
+{% block content %}
+<div class="container">
+  <h4>Update Product</h4>
+  <form method="post", novalidate class="row g-3 bg-white border p-3 mt-2">
+    {{ form.hidden_tag() }}
+    <div class="mb-3 text-center">
+      <h3>{{ product.product_name }}</h3>
+    </div>
+    <hr>
+    {{ au.add_update(label=form.product_name.label(class="form-label"), input=form.product_name(class="form-control text-muted"), err=form.product_name.errors) }}
+    {{ au.add_update(label=form.product_type.label(class="form-label"), input=form.product_type(class="form-control form-select text-muted"), err=form.product_type.errors) }}
+    {{ au.add_update(label=form.package_type.label(class="form-label"), input=form.package_type(class="form-control form-select text-muted"), err=form.package_type.errors) }}
+    {{ au.add_update(label=form.quantity.label(class="form-label"), input=form.quantity(class="form-control form-select text-muted"), err=form.quantity.errors, sm=product.quantity) }}
+    {{ au.add_update(label=form.max_quantity.label(class="form-label"), input=form.max_quantity(class="form-control form-select text-muted"), err=form.max_quantity.errors, sm=product.max_quantity) }}
+    {{ au.add_update(label=form.min_quantity.label(class="form-label"), input=form.min_quantity(class="form-control form-select text-muted"), err=form.min_quantity.errors, sm=product.min_quantity) }}
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

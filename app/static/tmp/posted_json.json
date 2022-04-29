@@ -1,0 +1,18 @@
+{
+    "Name": "jollibe fried chicken",
+    "Description": "filipino style fried chicken",
+    "Ingredients": [
+        {
+            "measurement": {
+                "whole": "1",
+                "fraction": "1/2"
+            },
+            "unit": "tbsp",
+            "item": "salt"
+        }
+    ],
+    "Instructions": [
+        "make batter"
+    ],
+    "Image": "kite_hxh.png"
+}
