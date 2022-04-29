@@ -18,6 +18,7 @@ login.login_message_category = 'info'
 
 # Uncomment line below when starting a new db ########################################
 # from app.models import User, Feedback, FeedbackSchema, Product, ProductSchema, Token
+# db.create_all()
 ######################################################################################
 
 

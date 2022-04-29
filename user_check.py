@@ -18,7 +18,8 @@ def check_user():
         add_admin.set_password(Config.MOVINTORY_DEFAULT_PASSWORD)
         db.session.add(add_admin)
         db.session.commit()
-
+    
+    user = User.query.one()
     if user.id != 1 or user.username != 'admin':
         print('This user is not supposed to be in the database!')
         quit()
