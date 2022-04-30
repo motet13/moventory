@@ -1,13 +1,7 @@
-from crypt import methods
-from dataclasses import field
-from email import message
-from operator import itemgetter
 from flask import render_template, flash, request, jsonify, make_response
 from flask.helpers import url_for
-from flask.wrappers import Request
 import requests
 from werkzeug.utils import redirect
-from werkzeug.wrappers import response
 from app import db 
 from flask_login import current_user, login_required
 from app.models import Product, ProductSchema
@@ -18,8 +12,6 @@ from config import Config
 from app.main.forms import SchedulerForm
 import csv
 from os.path import exists
-from collections import OrderedDict
-import pandas as pd
 
 main = Blueprint('main', __name__)
 
@@ -32,8 +24,6 @@ def index():
     recipe_counts = total_recipes()
     activate_gen = 'false'
     task_counts = total_task()
-
-    print(f'Task counts: {task_counts}')
 
     for product in products:
         if product.quantity <= product.min_quantity:
@@ -118,11 +108,6 @@ def gen_prod_lists():
         flash(f'You do not need to go shopping yet.', 'info mt-2')
         return redirect(url_for('main.index'))
 
-    # [ TEST DATA ] Comment shopping_list variable line after testing and uncomment commented lines above.
-    # shopping_list = {'sheet1':[
-    #     {'boughtQuantity': 0, 'currentQuantity': 0, 'item': 'Apples', 'movintoryId': 1}
-    # ]}
-
     res = make_response(jsonify(shopping_list), 200)
 
     return render_template('generated_lists.html', res=res.get_json())
@@ -198,16 +183,19 @@ def scheduled_list():
     if exists(csv_file):
         with open(csv_file, 'r') as file:
             read_csv = csv.DictReader(file)
-            for idx, line in enumerate(read_csv, start=1):
-                scheduled_list_dict['Task'].append({'Idx': idx, 'Subject': line['Subject'], 'DueDate': line['DueDate']})
+            for line in read_csv:
+                scheduled_list_dict['Task'].append({
+                    'Subject': line['Subject'],
+                    'DueDate': datetime.fromisoformat(line['DueDate'])
+                })
 
-        df = pd.read_csv(csv_file)
-        sorted_list = df.sort_values(by='DueDate')
-        sorted_list.DueDate = pd.to_datetime(sorted_list.DueDate)
-        sorted_list = sorted_list.reset_index(drop=True)
-        new_dict = sorted_list.to_dict('index')
+        scheduled_list_dict = sorted(scheduled_list_dict['Task'],
+            key=lambda x: x['DueDate'])
+
     
-    return render_template('scheduled_list.html', scheduled_list_dict=scheduled_list_dict, new_dict=new_dict, tday=tday)
+    return render_template('scheduled_list.html',
+        scheduled_list_dict=scheduled_list_dict,
+        tday=tday, enumerate=enumerate)
 
 
 @main.route('/about')
@@ -216,4 +204,5 @@ def about():
     version = 'v2'
     creation_date = 'September 19, 2020'
 
-    return render_template('about.html', title='About', version=version, creation_date=creation_date, user=user)
+    return render_template('about.html', title='About', version=version,
+        creation_date=creation_date, user=user)

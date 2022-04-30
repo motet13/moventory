@@ -17,7 +17,7 @@
             </tr>
           </thead>
           <tbody>
-              {% for idx, task in new_dict.items(): %}
+              {% for idx, task in enumerate(scheduled_list_dict, start=1): %}
                 {% if task['DueDate'].timestamp() < tday: %}
                 <tr class="table-secondary">
                   <td class="small-table-text text-decoration-line-through">{{idx}}</td>
