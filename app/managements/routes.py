@@ -155,7 +155,7 @@ def settings_backup_restore():
         result = {'Token' : token, backup_file_name : {'Products': output}}
         res = make_response(jsonify(result))
 
-        with open(f"{Config.MOVINTORY_DOWNLOAD_FOLDER}/{backup_file_name}", 'w') as file:
+        with open(f"{Config.MOVENTORY_DOWNLOAD_FOLDER}/{backup_file_name}", 'w') as file:
             file.write(res.get_data().decode('utf-8'))
 
         return redirect(url_for('managements.backup_downloads', backup_filename=backup_file_name))
@@ -173,7 +173,7 @@ def settings_backup_restore():
         if file.filename.split('.')[1].lower() == 'json' and is_token is not None:
              # Make a copy of current DB Products and store it for backup.
             original_products_filename = f'original_products_{now.date()}.json'
-            with open(f'{Config.MOVINTORY_DB_ORIGINAL_PRODUCT_PATH}/{original_products_filename}', 'w') as original_file:
+            with open(f'{Config.MOVENTORY_DB_ORIGINAL_PRODUCT_PATH}/{original_products_filename}', 'w') as original_file:
                 original_content = make_response(jsonify({original_products_filename: {'Products': output}}))
                 original_file.write(original_content.get_data().decode('utf-8'))
 
@@ -210,7 +210,7 @@ def settings_backup_restore():
 def backup_downloads(backup_filename):
     try:
         return send_from_directory(
-            directory=Config.MOVINTORY_DOWNLOAD_FOLDER,
+            directory=Config.MOVENTORY_DOWNLOAD_FOLDER,
             path=None,
             filename=backup_filename,
             as_attachment=True
@@ -228,7 +228,7 @@ def delete_recipe_dish():
         d_name = build_dict(recipes['Recipes'], key="Name")
         idx = int(d_name.get(dish_name)['index'])
         image = recipes['Recipes'][idx]['Image']
-        image_path = path.join(f"{Config.MOVINTORY_RECIPE_IMAGE_PATH}/" + image)
+        image_path = path.join(f"{Config.MOVENTORY_RECIPE_IMAGE_PATH}/" + image)
         if image != 'default.jpg':
             remove(image_path)
         dumps_recipes(data=recipes, dict=None, index=idx, edit=False, delete=True)

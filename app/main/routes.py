@@ -36,7 +36,7 @@ def index():
     output = product_schema.dump(products) 
     res = make_response(jsonify(output), 200)
 
-    return render_template('index.html', title='MoVintory', products=products,
+    return render_template('index.html', title='MoVentory', products=products,
         tday=tday, num_items=num_items, res=res.get_json(), user=user,
         activate_gen=activate_gen, recipe_counts=recipe_counts,
         task_counts=task_counts)
@@ -100,7 +100,7 @@ def gen_prod_lists():
     if len(shopping_list['sheet1']) != 0:
         # POST shopping list to google sheet using sheety API
         sheety_endpoint = Config.SHEETY_ENDPOINT
-        sheety_headers = { "Authorization": f"Bearer {Config.MOVINTORY_SHEETY_TOKEN}" }
+        sheety_headers = { "Authorization": f"Bearer {Config.MOVENTORY_SHEETY_TOKEN}" }
         
         for item in shopping_list['sheet1']:
             requests.post(sheety_endpoint, json={"sheet1":item}, headers=sheety_headers)        
@@ -115,7 +115,7 @@ def gen_prod_lists():
 
 @main.route('/index/refresh-list', methods=['GET', 'POST'])
 def refresh():
-    token = Config.MOVINTORY_REFRESH_TOKEN
+    token = Config.MOVENTORY_REFRESH_TOKEN
    
     if request.method == 'POST':
         request_token = request.headers.get('Authorization')
@@ -146,7 +146,7 @@ def quantity(product_id):
 @main.route('/index/schedule_reminder', methods=['GET', 'POST'])
 def schedule_reminder():
     form = SchedulerForm()
-    schedule_file = f"{Config.MOVINTORY_SCHEDULE_PATH}/schedule.csv"
+    schedule_file = f"{Config.MOVENTORY_SCHEDULE_PATH}/schedule.csv"
 
     if request.method == 'POST':
         title = form.title.data.title()
@@ -176,7 +176,7 @@ def schedule_reminder():
 
 @main.route('/index/scheduled-list', methods=['GET', 'POST'])
 def scheduled_list():
-    csv_file = f'{Config.MOVINTORY_SCHEDULE_PATH}/schedule.csv'
+    csv_file = f'{Config.MOVENTORY_SCHEDULE_PATH}/schedule.csv'
     scheduled_list_dict = {"Task": []}
     tday = datetime.now().timestamp()
 

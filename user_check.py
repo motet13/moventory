@@ -14,8 +14,8 @@ def check_user():
         print(f'{e} Exiting now...')
         quit()
     except NoResultFound:
-        add_admin = User(username=Config.MOVINTORY_DEFAULT_USER, email=Config.MOVINTORY_DEFAULT_EMAIL)
-        add_admin.set_password(Config.MOVINTORY_DEFAULT_PASSWORD)
+        add_admin = User(username=Config.MOVENTORY_DEFAULT_USER, email=Config.MOVENTORY_DEFAULT_EMAIL)
+        add_admin.set_password(Config.MOVENTORY_DEFAULT_PASSWORD)
         db.session.add(add_admin)
         db.session.commit()
     

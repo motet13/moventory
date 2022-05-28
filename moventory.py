@@ -1,6 +1,5 @@
-from app import movintoryApp
-
+from app import moventoryApp
 
 if __name__ == '__main__':
-    # movintoryApp.run(debug=True, host='0.0.0.0')
-    movintoryApp.run(debug=True)
+    # moventoryApp.run(debug=True, host='0.0.0.0')
+    moventoryApp.run(debug=True)

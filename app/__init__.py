@@ -6,13 +6,13 @@ from flask_login import LoginManager
 from flask_jsglue import JSGlue
 
 
-movintoryApp = Flask(__name__)
-movintoryApp.config.from_object(Config)
-movintoryApp.config['MAX_CONTENT_LENGTH'] = 1000000
-db = SQLAlchemy(movintoryApp)
-ma = Marshmallow(movintoryApp)
-jsglue = JSGlue(movintoryApp)
-login = LoginManager(movintoryApp)
+moventoryApp = Flask(__name__)
+moventoryApp.config.from_object(Config)
+moventoryApp.config['MAX_CONTENT_LENGTH'] = 1000000
+db = SQLAlchemy(moventoryApp)
+ma = Marshmallow(moventoryApp)
+jsglue = JSGlue(moventoryApp)
+login = LoginManager(moventoryApp)
 login.login_view = 'users.login'
 login.login_message_category = 'info'
 
@@ -31,8 +31,8 @@ from app import error_handlers
 
 
 check_user()
-movintoryApp.register_blueprint(main)
-movintoryApp.register_blueprint(users)
-movintoryApp.register_blueprint(managements)
-movintoryApp.register_blueprint(recipes)
+moventoryApp.register_blueprint(main)
+moventoryApp.register_blueprint(users)
+moventoryApp.register_blueprint(managements)
+moventoryApp.register_blueprint(recipes)
 

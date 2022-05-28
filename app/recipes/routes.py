@@ -36,7 +36,7 @@ def edit_recipe_image():
         image_file = 'default.jpg'
         make_recipe_input['Image'] = image_file
 
-    image_path = path.join(f"{Config.MOVINTORY_RECIPE_IMAGE_PATH}/" + old_name)
+    image_path = path.join(f"{Config.MOVENTORY_RECIPE_IMAGE_PATH}/" + old_name)
     
     if old_name != 'default.jpg':
         remove(image_path)

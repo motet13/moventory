@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import SearchField
-#from wtforms.fields.html5 import SearchField
+# from wtforms.fields import SearchField
+from wtforms.fields.html5 import SearchField
 from wtforms import StringField, SubmitField, SelectField, DecimalField, TextAreaField
 from wtforms.validators import ValidationError, DataRequired
 from app.models import Product
