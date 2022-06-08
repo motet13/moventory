@@ -30,9 +30,9 @@ class Feedback(db.Model):
         return f'<Post {self.body}>'
 
 
-class FeedbackSchema(ma.SQLAlchemyAutoSchema):
-    class Meta:
-        model = Feedback
+# class FeedbackSchema(ma.SQLAlchemyAutoSchema):
+#     class Meta:
+#         model = Feedback
 
 
 class Product(db.Model):

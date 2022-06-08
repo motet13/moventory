@@ -10,3 +10,5 @@ app/static/bootstrap_icons/**
 app/static/css/bootstrap5/**
 app/static/js/bootstrap5/**
 app/movintoryapp.db
+venv/**
+requirements.txt.bak

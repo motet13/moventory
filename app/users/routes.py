@@ -2,7 +2,7 @@ from flask import render_template, url_for, flash, redirect, request, jsonify, m
 from app import db
 from app.users.forms import LoginForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Feedback, FeedbackSchema
+from app.models import User, Feedback
 from werkzeug.urls import url_parse
 from flask import Blueprint
 

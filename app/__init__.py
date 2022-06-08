@@ -3,7 +3,6 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_login import LoginManager
-from flask_jsglue import JSGlue
 
 
 moventoryApp = Flask(__name__)
@@ -11,7 +10,6 @@ moventoryApp.config.from_object(Config)
 moventoryApp.config['MAX_CONTENT_LENGTH'] = 1000000
 db = SQLAlchemy(moventoryApp)
 ma = Marshmallow(moventoryApp)
-jsglue = JSGlue(moventoryApp)
 login = LoginManager(moventoryApp)
 login.login_view = 'users.login'
 login.login_message_category = 'info'
@@ -20,7 +18,6 @@ login.login_message_category = 'info'
 # from app.models import User, Feedback, FeedbackSchema, Product, ProductSchema, Token
 # db.create_all()
 ######################################################################################
-
 
 from user_check import check_user
 from app.main.routes import main
